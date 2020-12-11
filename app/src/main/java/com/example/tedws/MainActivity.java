@@ -17,13 +17,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void OpenG(View view) {
-    }
+
 
     public void Openotdelbank(View view) {
 
-       //Intent intent=new Intent(this,Work_bank.class);
-        //startActivity(intent);
+       Intent intent=new Intent(this,OtdelBank.class);
+       startActivity(intent);
 
     }
 
@@ -41,5 +40,10 @@ public class MainActivity extends AppCompatActivity {
         dialogalr.setView(dial);
 
         dialogalr.create().show();
+    }
+
+    public void Opencurs(View view) {
+        Intent intent=new Intent(this,Exchangerate.class);
+        startActivity(intent);
     }
 }
