@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,42 +20,63 @@ public class OtdelBank extends AppCompatActivity {
     Context context;
     LayoutInflater layoutInflater;
     List<Spisokbankov>spisokbankovs=new ArrayList<>();
+    BankListAdapter bankListAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otdel_bank);
 
+        AddOtd();
         Vstavka();
+    }
+
+    private void AddOtd() {
+        spisokbankovs.add(new Spisokbankov("sdsd","123","Rabotaet","12"));
+        spisokbankovs.add(new Spisokbankov("sdsd","1","Rabotaet","09"));
+        spisokbankovs.add(new Spisokbankov("sdsd","12","Rabotaet","14"));
     }
 
     private void Vstavka() {
         listView=findViewById(R.id.otdban);
         context=this;
         layoutInflater=layoutInflater.from(context);
-        //BankListAdapter bankListAdapter=new BankListAdapter;
+        BankListAdapter bankListAdapter=new BankListAdapter();
+        listView.setAdapter(bankListAdapter);
 
     }
 
 
-    //class BankListAdapter extends BaseAdapter {
-       // @Override
-        //public int getCount() {
-         //   return 0;
-       // }
+    public class BankListAdapter extends BaseAdapter {
 
-       // @Override
-      //  public Object getItem(int position) {
-         //   return null;
-      //  }
+        @Override
+        public int getCount() {
+            return spisokbankovs.size();
+        }
 
-       // @Override
-        //public long getItemId(int position) {
-       //     return 0;
-        //}
+        @Override
+        public Object getItem(int position) {
+            return spisokbankovs.get(position);
+        }
 
-        //@Override
-       // public View getView(int position, View convertView, ViewGroup parent) {
-       //     return null;
-       // }
-    //}
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            Spisokbankov spis= (Spisokbankov) getItem(position);
+            convertView=layoutInflater.inflate(R.layout.spisok_bank, parent, false);
+            TextView yt=convertView.findViewById(R.id.adr);
+            TextView nv=convertView.findViewById(R.id.otd);
+            TextView c=convertView.findViewById(R.id.stat);
+            TextView cq=convertView.findViewById(R.id.time);
+
+            yt.setText(spis.getAdress());
+            nv.setText(spis.getOtdelenie());
+            c.setText(spis.getStatus());
+            cq.setText(spis.getVremrab());
+            return convertView;
+        }
+    }
 }
