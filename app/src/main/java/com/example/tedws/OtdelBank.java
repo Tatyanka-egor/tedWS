@@ -1,4 +1,4 @@
-package com.example.tedws
+package com.example.tedws;
 
 import androidx.appcompat.app.AppCompatActivity;
 
