@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="NameTextView" type="id" />
+    <item name="LatiduteTextView" type="id" />
+    <item name="LongitudeTextView" type="id" />
+</resources>
